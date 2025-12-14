@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Admin - Bicycle Management</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="admin">
+  <div class="container">
+    <div class="nav">
+      <div class="brand">
+        Admin Portal <span class="badge">BMS v1.1</span>
+      </div>
+      <div class="navlinks">
+        <a href="index.html">Home</a>
+        <a href="student.html">Student</a>
+        <a href="admin.html">Admin</a>
+        <a href="rules.html">Rules</a>
+        <a href="about.html">Developers</a>
+      </div>
+    </div>
+
+    <div id="maintenance" class="card hidden" style="margin-top:16px;">
+      <h2 class="h1">Maintenance Break</h2>
+      <p class="p">Maintenance mode is enabled. Only admin can toggle it off.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h1 class="h1">Admin Account</h1>
+        <p class="p">Current status: <b id="adminWho">Not logged in</b></p>
+
+        <div id="tabAdminAuth" class="card" style="background:rgba(255,255,255,.03);">
+          <h2 class="h1" style="font-size:18px;">Admin Login</h2>
+          <div class="form">
+            <div class="input">
+              <label>Username</label>
+              <input id="adUser" placeholder="Enter admin username" />
+            </div>
+            <div class="input">
+              <label>Password</label>
+              <input id="adPass" type="password" placeholder="Enter admin password" />
+            </div>
+            <button class="btn primary" id="adminLoginBtn">Log In</button>
+          </div>
+          <div id="adminToast" class="toast hidden"></div>
+        </div>
+
+        <div id="tabAdminApp" class="hidden">
+          <div class="btnrow">
+            <button class="btn danger" id="adminLogoutBtn">Log Out</button>
+            <button class="btn" id="maintenanceBtn">Toggle Maintenance Mode</button>
+          </div>
+
+          <hr class="sep" />
+
+          <h2 class="h1" style="font-size:18px;">Add Bicycle</h2>
+          <div class="form">
+            <div class="input">
+              <label>Brand</label>
+              <input id="bikeBrand" placeholder="" />
+            </div>
+            <div class="input">
+              <label>Model</label>
+              <input id="bikeModel" placeholder="" />
+            </div>
+            <div class="input">
+              <label>Cost per Minute ($)</label>
+              <input id="bikeCost" type="number" step="0.01" placeholder="" />
+            </div>
+            <div class="input">
+              <label>Inventory Quantity</label>
+              <input id="bikeInv" type="number" step="1" placeholder="" />
+            </div>
+            <button class="btn primary" id="addBikeBtn">Add Bicycle</button>
+            <div id="adminToast2" class="toast hidden"></div>
+          </div>
+
+          <hr class="sep" />
+
+          <h2 class="h1" style="font-size:18px;">Bicycle Inventory</h2>
+          <div class="tablewrap">
+            <table id="adminBikeTable">
+              <thead>
+                <tr>
+                  <th>ID</th><th>Brand</th><th>Model</th><th>Cost/Min</th><th>Inventory</th><th>Actions</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+
+          <hr class="sep" />
+
+          <h2 class="h1" style="font-size:18px;">Rental History</h2>
+          <div class="tablewrap">
+            <table id="adminRentalTable">
+              <thead>
+                <tr>
+                  <th>Rental ID</th><th>Bicycle ID</th><th>Duration</th><th>Cost</th>
+                  <th>Brand</th><th>Model</th><th>Username</th><th>Transaction</th><th>Payment</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+
+          <hr class="sep" />
+
+          <h2 class="h1" style="font-size:18px;">Users</h2>
+          <div class="tablewrap">
+            <table id="adminUserTable">
+              <thead>
+                <tr><th>Username</th><th>Password</th></tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+
+          <hr class="sep" />
+
+          <h2 class="h1" style="font-size:18px;">Change Password</h2>
+          <div class="form">
+            <div class="input">
+              <label>Old Password</label>
+              <input id="oldPass" type="password" />
+            </div>
+            <div class="input">
+              <label>New Password</label>
+              <input id="newPass" type="password" />
+            </div>
+            <div class="input">
+              <label>Confirm New Password</label>
+              <input id="cnfPass" type="password" />
+            </div>
+            <button class="btn" id="changePassBtn">Change Password</button>
+            <div id="adminToast3" class="toast hidden"></div>
+          </div>
+
+          <hr class="sep" />
+
+          <h2 class="h1" style="font-size:18px;">Manage Admins (Basic)</h2>
+          <div class="form">
+            <div class="input">
+              <label>New Admin Username</label>
+              <input id="newAdminUser" />
+            </div>
+            <div class="input">
+              <label>New Admin Password</label>
+              <input id="newAdminPass" type="password" />
+            </div>
+            <div class="input">
+              <label>Confirm Password</label>
+              <input id="newAdminCnf" type="password" />
+            </div>
+            <button class="btn primary" id="addAdminBtn">Add Admin</button>
+            <div id="adminToast4" class="toast hidden"></div>
+          </div>
+
+          <div style="margin-top:12px;" class="tablewrap">
+            <table id="adminListTable">
+              <thead>
+                <tr><th>Username</th><th>Password</th><th>Action</th></tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+
+          <div class="note" style="margin-top:10px;">
+            Superadmin logic in your C code is tied to username "perplexahedron".
+            This frontend shows Manage Admin for any logged admin for simplicity.
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 class="h1">Admin Features</h2>
+        <p class="p">
+          • Admin login<br/>
+          • Add/Update/Remove bicycles<br/>
+          • View inventory<br/>
+          • View rental history<br/>
+          • View users<br/>
+          • Change password<br/>
+          • Manage admins (basic)<br/>
+          • Maintenance mode
+        </p>
+
+        <hr class="sep" />
+
+        <h2 class="h1" style="font-size:18px;">KPIs</h2>
+        <div class="kpi">
+          <div class="box">
+            <div class="label">Bicycles</div>
+            <div class="value" id="kpiBikes">0</div>
+          </div>
+          <div class="box">
+            <div class="label">Users</div>
+            <div class="value" id="kpiUsers">0</div>
+          </div>
+          <div class="box">
+            <div class="label">Rentals</div>
+            <div class="value" id="kpiRentals">0</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Student - Bicycle Management</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="student">
+  <div class="container">
+    <div class="nav">
+      <div class="brand">
+        Student Portal <span class="badge">BMS v1.1</span>
+      </div>
+      <div class="navlinks">
+        <a href="index.html">Home</a>
+        <a href="student.html">Student</a>
+        <a href="admin.html">Admin</a>
+        <a href="rules.html">Rules</a>
+        <a href="about.html">Developers</a>
+      </div>
+    </div>
+
+    <div id="maintenance" class="card hidden" style="margin-top:16px;">
+      <h2 class="h1">Maintenance Break</h2>
+      <p class="p">Sorry, the servers are under maintenance. Please try again later.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h1 class="h1">Student Account</h1>
+        <p class="p">Current status: <b id="studentWho">Not logged in</b></p>
+
+        <div id="tabStudentAuth" class="card" style="background:rgba(255,255,255,.03);">
+          <h2 class="h1" style="font-size:18px;">Login</h2>
+          <div class="form">
+            <div class="input">
+              <label>Username</label>
+              <input id="liUser" placeholder="Enter username" />
+            </div>
+            <div class="input">
+              <label>Password</label>
+              <input id="liPass" type="password" placeholder="Enter password" />
+            </div>
+            <button class="btn primary" id="studentLoginBtn">Log In</button>
+          </div>
+
+          <hr class="sep" />
+
+          <h2 class="h1" style="font-size:18px;">Sign Up</h2>
+          <div class="form">
+            <div class="input">
+              <label>Username</label>
+              <input id="suUser" placeholder="Choose username" />
+            </div>
+            <div class="input">
+              <label>Password</label>
+              <input id="suPass" type="password" placeholder="Choose password" />
+            </div>
+            <div class="input">
+              <label>Confirm Password</label>
+              <input id="suConfirm" type="password" placeholder="Confirm password" />
+            </div>
+            <button class="btn" id="studentSignupBtn">Sign Up</button>
+          </div>
+
+          <div id="studentToast" class="toast hidden"></div>
+        </div>
+
+        <div id="tabStudentApp" class="hidden">
+          <div class="btnrow">
+            <button class="btn danger" id="studentLogoutBtn">Log Out</button>
+            <button class="btn" id="myHistoryBtn">Refresh My Rental History</button>
+          </div>
+
+          <hr class="sep" />
+
+          <h2 class="h1" style="font-size:18px;">Available Bicycles</h2>
+          <div class="tablewrap">
+            <table id="studentBikeTable">
+              <thead>
+                <tr>
+                  <th>ID</th><th>Brand</th><th>Model</th><th>Cost/Min</th><th>Inventory</th><th>Action</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+
+          <hr class="sep" />
+
+          <h2 class="h1" style="font-size:18px;">My Rental History</h2>
+          <div class="tablewrap">
+            <table id="studentRentalTable">
+              <thead>
+                <tr>
+                  <th>Rental ID</th><th>Bicycle ID</th><th>Duration</th><th>Cost</th>
+                  <th>Brand</th><th>Model</th><th>Username</th><th>Transaction</th><th>Payment</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+
+          <div class="note" style="margin-top:10px;">
+            Renting uses prompts for duration + payment simulation (Bkash/Nagad) to match your console workflow.
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 class="h1">Student Features</h2>
+        <p class="p">
+          • Signup/Login<br/>
+          • View bicycles<br/>
+          • Rent bicycle (duration × cost/min)<br/>
+          • Payment simulation (Bkash/Nagad)<br/>
+          • View rental history
+        </p>
+        <p class="note">
+          Complains/Reviews menu exists in your C UI but is not implemented in the code you shared.
+          If you want it on the website too, send that C part and I will add it.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

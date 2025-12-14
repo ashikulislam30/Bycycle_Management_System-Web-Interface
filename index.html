@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bicycle Management System</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="index">
+  <div class="container">
+    <div class="nav">
+      <div class="brand">
+        Bicycle Management System <span class="badge">v1.1</span>
+      </div>
+      <div class="navlinks">
+        <a href="index.html">Home</a>
+        <a href="student.html">Student</a>
+        <a href="admin.html">Admin</a>
+        <a href="rules.html">Rules</a>
+        <a href="about.html">Developers</a>
+      </div>
+    </div>
+
+    <div id="maintenance" class="card hidden" style="margin-top:16px;">
+      <h2 class="h1">Maintenance Break</h2>
+      <p class="p">Sorry, the servers are under maintenance. Please try again later.</p>
+      <button class="btn primary" id="maintenanceToggle">Type Y (simulation) to go back online</button>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h1 class="h1">Welcome</h1>
+        <p class="p">
+          This website replicates the features of your C-based bicycle management system using a frontend-only approach.
+          Data is stored in your browser (localStorage).
+        </p>
+
+        <div class="btnrow">
+          <a class="btn primary" href="student.html">Continue as Student</a>
+          <a class="btn primary" href="admin.html">Continue as Admin</a>
+          <a class="btn" href="rules.html">Rules & Regulations</a>
+          <a class="btn" href="about.html">About Developers</a>
+        </div>
+
+        <hr class="sep" />
+        <div class="kpi">
+          <div class="box">
+            <div class="label">Bicycles in System</div>
+            <div class="value" id="kpiBikes">0</div>
+          </div>
+          <div class="box">
+            <div class="label">Students Registered</div>
+            <div class="value" id="kpiUsers">0</div>
+          </div>
+          <div class="box">
+            <div class="label">Total Rentals</div>
+            <div class="value" id="kpiRentals">0</div>
+          </div>
+        </div>
+
+        <div class="footer">
+          Note: For a real deployment, you should replace localStorage with a backend + database.
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 class="h1">Quick Start</h2>
+        <p class="p">
+          Admin accounts are preloaded:
+          <br/>• notthedroid / notthedroid
+          <br/>• ashik01 / password
+          <br/>• ashik02 / 1234
+        </p>
+        <p class="note">
+          Passwords are stored using the same “hash shifting” logic as your C project (for demo only).
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
